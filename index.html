@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./src/styles/main.css">
+        <title>Мини-панель мониторинга датчиков</title>
+    </head>
+    <body>
+        <div class="app-container">
+            <header>
+                <div class="logo">
+                    <span class="icon">📊</span>
+                    <h1>SCADA Мониторинг Датчиков</h1>
+                </div>
+
+                <div class="stats-panel">
+                    <div class="stat-badge normal">
+                        Норма: <output id="count-normal">3</output>
+                    </div>
+                    <div class="stat-badge warning">
+                        Предупреждение: <output id="count-warning">0</output>
+                    </div>
+                    <div class="stat-badge critical">
+                        Критично: <output id="count-critical">2</output>
+                    </div>
+                </div>
+            </header>
+            <section class="control-panel">
+                <h2>Добавить датчик</h2>
+                <form id="add-sensor-form">
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label for="sensor-name">Название</label>
+                            <input type="text" id="sensor-name" placeholder="Например: Датчик №1" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="sensor-type">Тип</label>
+                            <select id="sensor-type">
+                                <option value="temperature">Температура</option>
+                                <option value="pressure">Давление</option>
+                                <option value="level">Уровень</option>
+                            </select>
+                        </div>
+                        <div class="input-group sm">
+                            <label for="sensor-val">Начальное знач.</label>
+                            <input type="number" id="sensor-val" placeholder="20" step="0.1" required>
+                        </div>
+
+                        <div class="input-group sm">
+                            <label for="sensor-min">Мин. порог</label>
+                            <input type="number" id="sensor-min" placeholder="15" step="0.1" required>
+                        </div>
+
+                        <div class="input-group sm">
+                            <label for="sensor-max">Макс. порог</label>
+                            <input type="number" id="sensor-max" placeholder="30" step="0.1" required>
+                        </div>
+
+                        <div class="input-group btn-area">
+                            <label>&nbsp;</label> <button type="submit" class="btn-primary">+ Добавить</button>
+                        </div>
+                    </div>
+                </form>
+
+                <nav class="filters">
+                    <button class="filter-btn active" data-filter="all">Все</button>
+                    <button class="filter-btn" data-filter="normal">Норма</button>
+                    <button class="filter-btn" data-filter="warning">Предупреждение</button>
+                    <button class="filter-btn" data-filter="critical">Критично</button>
+                </nav>
+            </section>
+            <main id="sensors-grid" class="grid-container"></main>
+        </div>
+        <script type="module" src="main.js"></script>
+    </body>
+</html>
