@@ -40,6 +40,8 @@ document.getElementById('filters').addEventListener('click', (e) => {
 
 document.getElementById('clear-btn');
 
+
+//initial mock data
 manager.addSensor(new Sensor(1, "Котел Основной", SensorType.TEMPERATURE, 22.5, 18, 25));
 manager.addSensor(new Sensor(2, "Насос Подачи", SensorType.PRESSURE, 5.2, 1.5, 4.5));
 manager.addSensor(new Sensor(3, "Бак Воды", SensorType.LEVEL, 85, 20, 80));
