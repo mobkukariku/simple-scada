@@ -3,6 +3,7 @@
     --panel-bg: #1C1441;
     --primary: #00407C;
     --input: #191F64;
+    --text-primary: #3b82f6;
     --green: #2ecc71;
     --red: #e74c3c;
     --orange: #f1c40f;
@@ -52,7 +53,7 @@ header{
 .logo h1 {
     margin: 0;
     font-size: 1.5rem;
-    color: #5a67d8;
+    color: var(--text-primary);
 }
 
 .stats-panel {
@@ -80,7 +81,7 @@ header{
 
 .control-panel h2 {
     margin-top: 0;
-    color: #3b82f6;
+    color: var(--text-primary);
     font-size: 1.1rem;
     margin-bottom: 20px;
 }
@@ -114,16 +115,16 @@ label {
 }
 
 input, select {
-    background: #121225;
-    border: 1px solid #4a5568;
+    background: var(--input);
+    border: none;
     color: white;
-    padding: 10px;
+    padding: 12px 14px;
     border-radius: 6px;
     font-size: 0.9rem;
 }
 
 .btn-primary {
-    background: #3182ce;
+    background: var(--primary);
     color: white;
     border: none;
     padding: 10px 20px;
@@ -154,66 +155,7 @@ input, select {
 
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
 }
 
-.sensor-card {
-    background: var(--panel-bg);
-    border-radius: 12px;
-    padding: 20px;
-    position: relative;
-    border-left: 5px solid transparent;
-}
-
-.sensor-card.status-normal { border-left-color: var(--green); }
-.sensor-card.status-warning { border-left-color: var(--orange); }
-.sensor-card.status-critical { border-left-color: var(--red); }
-
-.card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: start;
-    margin-bottom: 15px;
-}
-
-.card-header h3 {
-    margin: 0;
-    font-size: 1rem;
-    color: #4299e1;
-}
-.sensor-type {
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    display: block;
-}
-
-.btn-close {
-    background: none;
-    border: none;
-    color: var(--red);
-    cursor: pointer;
-    font-size: 1.2rem;
-}
-
-.card-value {
-    font-size: 2.5rem;
-    font-weight: bold;
-    text-align: center;
-    margin: 20px 0;
-}
-.status-normal .card-value { color: var(--green); }
-.status-warning .card-value { color: var(--orange); }
-.status-critical .card-value { color: var(--red); }
-
-.card-actions { display: flex; gap: 10px; margin-top: 20px; }
-.card-actions input { width: 100%; }
-.btn-refresh { background: #2d3748; border: none; color: white; padding: 0 15px; border-radius: 6px; cursor: pointer; }
-
-.card-footer {
-    margin-top: 15px;
-    font-size: 0.7rem;
-    color: #555;
-    text-align: right;
-}
