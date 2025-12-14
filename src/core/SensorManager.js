@@ -12,7 +12,8 @@ export class SensorManager {
     }
 
     updateSensorValue(id, newVal) {
-        this.sensors = this.sensors.map(sensor => sensor.id === id ? {...sensor, value: newVal} : sensor);
+        const sensor = this.getSensorById(id);
+        if (sensor) sensor.updateValue(newVal);
     }
 
     getSensorById(id) {
@@ -24,6 +25,8 @@ export class SensorManager {
     }
 
     getSensorsByStatus(status) {
+        if (status === 'all') return this.getAllSensors();
+
         return this.sensors.filter(sensor => sensor.status === status);
     }
 }

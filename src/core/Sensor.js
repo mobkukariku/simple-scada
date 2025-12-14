@@ -1,7 +1,7 @@
-import {SENSOR_RULES, SensorColor, SensorStatus} from "../types/sensor";
+import {SensorColor, SensorRules, SensorStatus} from "../types/sensor.js";
 
 
-class Sensor {
+export class Sensor {
     constructor(id, name, type, value, minValue, maxValue) {
         this.id = id;
         this.name = name;
@@ -20,7 +20,7 @@ class Sensor {
     }
 
     checkThreshold() {
-        const rules = SENSOR_RULES[this.type];
+        const rules = SensorRules[this.type];
         if (!rules) return;
 
         const { minValue, maxValue, value } = this;
