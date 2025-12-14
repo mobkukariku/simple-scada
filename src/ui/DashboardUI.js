@@ -13,7 +13,7 @@ export class DashboardUI {
         const sensors = this.manager.getSensorsByStatus(this.currentFilter);
 
         if (sensors.length === 0) {
-            this.container.innerHTML = '<p style="color:#666; width:100%;">Нет датчиков</p>';
+            this.container.innerHTML = '<p class="not-found" >Нет датчиков</p>';
         }
 
         sensors.forEach(sensor => {
