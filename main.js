@@ -23,6 +23,23 @@ document.getElementById('add-sensor-form').addEventListener('submit', (e) => {
     e.target.reset();
 });
 
+
+document.getElementById('filters').addEventListener('click', (e) => {
+    if (e.target.classList.contains('filter-btn')) {
+
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+
+        e.target.classList.add('active');
+
+        const filter = e.target.dataset.filter;
+        ui.setFilter(filter);
+    }
+});
+
+document.getElementById('clear-btn');
+
 manager.addSensor(new Sensor(1, "Котел Основной", SensorType.TEMPERATURE, 22.5, 18, 25));
 manager.addSensor(new Sensor(2, "Насос Подачи", SensorType.PRESSURE, 5.2, 1.5, 4.5));
 manager.addSensor(new Sensor(3, "Бак Воды", SensorType.LEVEL, 85, 20, 80));

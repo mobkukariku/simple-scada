@@ -1,4 +1,4 @@
-import { SensorRules, SensorStatusLabel, SensorTypeLabel} from "../types/sensor.js";
+import {SensorRules, SensorStatus, SensorStatusLabel, SensorTypeLabel} from "../types/sensor.js";
 
 export class DashboardUI {
     constructor(sensorManager, container) {
@@ -20,6 +20,8 @@ export class DashboardUI {
             const cardElement = this.renderSensor(sensor);
             this.container.appendChild(cardElement);
         })
+
+        this.updateStats();
     }
 
     renderSensor(sensor){
@@ -77,6 +79,20 @@ export class DashboardUI {
         this.render();
     }
 
+    setFilter(filter){
+        this.currentFilter = filter;
+        this.render();
+    }
 
+    updateStats() {
+        const stats = this.manager.getStats();
 
+        const elNormal = document.getElementById('count-normal');
+        const elWarning = document.getElementById('count-warning');
+        const elCritical = document.getElementById('count-critical');
+
+        if (elNormal) elNormal.textContent = stats[SensorStatus.NORMAL];
+        if (elWarning) elWarning.textContent = stats[SensorStatus.WARNING];
+        if (elCritical) elCritical.textContent = stats[SensorStatus.CRITICAL];
+    }
 }

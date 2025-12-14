@@ -1,3 +1,5 @@
+import {SensorStatus} from "../types/sensor.js";
+
 export class SensorManager {
     constructor() {
         this.sensors = [];
@@ -28,5 +30,21 @@ export class SensorManager {
         if (status === 'all') return this.getAllSensors();
 
         return this.sensors.filter(sensor => sensor.status === status);
+    }
+
+    getStats() {
+        const stats = {
+            [SensorStatus.NORMAL]: 0,
+            [SensorStatus.WARNING]: 0,
+            [SensorStatus.CRITICAL]: 0
+        };
+
+        this.sensors.forEach(sensor => {
+            if (stats[sensor.status] !== undefined) {
+                stats[sensor.status]++;
+            }
+        });
+
+        return stats;
     }
 }
