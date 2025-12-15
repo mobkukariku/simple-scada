@@ -2,25 +2,31 @@ import { SensorManager } from "./src/core/SensorManager.js";
 import { DashboardUI } from "./src/ui/DashboardUI.js";
 import { SensorType } from "./src/types/sensor.js";
 import { Sensor } from "./src/core/Sensor.js";
+import {clearError, showError} from "./src/ui/formErrors.js";
 
 const manager = new SensorManager();
 const ui = new DashboardUI(manager, '#sensors-grid');
 
 document.getElementById('add-sensor-form').addEventListener('submit', (e) => {
     e.preventDefault();
+    try{
+        clearError();
 
-    const name = document.getElementById('sensor-name').value;
-    const type = document.getElementById('sensor-type').value;
-    const val = Number(document.getElementById('sensor-val').value);
-    const min = Number(document.getElementById('sensor-min').value);
-    const max = Number(document.getElementById('sensor-max').value);
+        const name = document.getElementById('sensor-name').value;
+        const type = document.getElementById('sensor-type').value;
+        const val = Number(document.getElementById('sensor-val').value);
+        const min = Number(document.getElementById('sensor-min').value);
+        const max = Number(document.getElementById('sensor-max').value);
 
-    const id = Date.now();
+        const id = Date.now();
 
-    manager.addSensor(new Sensor(id, name, type, val, min, max));
-    ui.render();
+        manager.addSensor(new Sensor(id, name, type, val, min, max));
+        ui.render();
 
-    e.target.reset();
+        e.target.reset();
+    }catch (error){
+        showError(error);
+    }
 });
 
 

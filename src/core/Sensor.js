@@ -3,6 +3,11 @@ import {SensorColor, SensorRules, SensorStatus} from "../types/sensor.js";
 
 export class Sensor {
     constructor(id, name, type, value, minValue, maxValue) {
+
+        if (minValue >= maxValue) {
+            throw new Error('Минимальный пороговый уровень должен быть меньше максимального порогового значения.');
+        }
+
         this.id = id;
         this.name = name;
         this.type = type;

@@ -126,11 +126,20 @@ input, select {
     background: var(--primary);
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 12px 20px;
     border-radius: 6px;
     cursor: pointer;
     white-space: nowrap;
 }
+
+.btn-refresh .icon {
+    transition: transform 0.3s ease;
+}
+
+.btn-refresh:active .icon {
+    transform: rotate(-90deg);
+}
+
 .btn-primary:hover { background: #2b6cb0; }
 
 .filters {
@@ -140,15 +149,15 @@ input, select {
 }
 
 .filter-btn {
-    background: transparent;
-    border: 1px solid #4a5568;
+    background: var(--input);
     color: var(--text-muted);
-    padding: 6px 16px;
+    border: none;
+    padding: 10px 16px;
     border-radius: 4px;
     cursor: pointer;
 }
 .filter-btn.active, .filter-btn:hover {
-    background: #2d3748;
+    background: var(--primary);
     color: white;
     border-color: #3182ce;
 }
@@ -158,6 +167,21 @@ input, select {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
 }
+
+.form-error {
+    display: none;
+    color: var(--red);
+    font-size: 0.8rem;
+    background: rgba(231, 76, 60, 0.34);
+    padding: 10px 20px;
+    border-radius: 8px;
+    border-left: 4px solid var(--red);
+}
+
+.form-error.visible {
+    display: block;
+}
+
 
 
 @media screen and (max-width: 512px) {
